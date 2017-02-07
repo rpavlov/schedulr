@@ -1,24 +1,29 @@
-# README
+# Schedulr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+View available timeslots for a <skilled_service_person>, and book them for a <skilled_service>. 
 
-* Ruby version
+## Todo
 
-* System dependencies
+* Wire up actionmailer
+* Add limit to bookings.
+* Add recurring bookings.
 
-* Configuration
+## Prerequisites
 
-* Database creation
+`docker-engine >=1.13`
+`docker-compose >=1.1.0`
 
-* Database initialization
+## Deployment & configuration
 
-* How to run the test suite
+Docker environment variables are referenced in `.env.web` and `.env.db`. Don't forget to drop in a `config/database.yml` too.
 
-* Services (job queues, cache servers, search engines, etc.)
+From within your host `git clone git@github.com:rpavlov/schedulr.git`, 
+`cd schedulr/`, `docker-compose build` and finally `docker-compose up`.
 
-* Deployment instructions
+Hit `0.0.0.0:3000`
 
-* ...
+##Testing
+
+`docker-compose run -e RAILS_ENV=test web rake rspec spec`
