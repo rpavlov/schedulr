@@ -5,15 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Role.create([{name: "Nanny"}, {name: "Parent"}])
 User.create([
-              {name: "Bob", email:"123@123.com" },
-              {name: "Jill", email:"123@123.com" },
-              {name: "Bill",  email:"123@123.com"}
+              {name: "Bob", email:"123@123.com", password:"12345678", password_confirmation: "12345678",roles: [Role.first]},
+              {name: "Jill", email:"123@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.first]},
+              {name: "Bill",  email:"123@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.last]}
             ])
+
 Listing.create([
-                 {user: User.first, description:"List1", available_at: 100.days.from_now, price:1235},
-                 {user: User.first, description:"List2", available_at: 5.days.from_now, price:10000},
-                 {user: User.last, description:"List3", available_at: 10.days.from_now, price:100}
+                 {users: [User.first], description:"List1", start_at: Date.new, end_at: 100.days.from_now, price:1235},
+                 {users: [User.first], description:"List2", start_at: Date.new, end_at: 5.days.from_now, price:10000},
+                 {users: [User.last], description:"List3", start_at: Date.new, end_at: 10.days.from_now, price:100}
                ])
-Role.create([{name: "Nanny"}, {name: "Parent"}
-            ])
+

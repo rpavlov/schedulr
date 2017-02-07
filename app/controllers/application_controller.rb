@@ -8,7 +8,4 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to '/login' unless current_user
   end
-  # def authorized_phase?(phase)
-  #   redirect_to disabled_survey_submissions_path if @survey.disabled_phases.include? phase
-  # end
 end
