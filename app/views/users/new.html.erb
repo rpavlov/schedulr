@@ -1,0 +1,16 @@
+<br/>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h1 style="text-align:center;">Register</h1>
+            <%= form_for :user, url: '/users' , html:{class:"signup"} do |f| %>
+                <p class="row">Name: <%= f.text_field :name %></p>
+                <p class="row">Email: <%= f.text_field :email %></p>
+                <p class="row">Password: <%= f.password_field :password %></p>
+                <p class="row">Password Confirmation: <%= f.password_field :password_confirmation %></p>
+                <p class="row">I am a: <%= f.collection_select :role_id, Role.all,:id,:name, include_blank: false %></p>
+                <p class="row"><%= f.submit "Submit", class:'btn btn-success' %></p>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,9 @@ class AddListingsModel < ActiveRecord::Migration[5.0]
       t.integer :price
       t.string :location
       t.text :description
-      t.date :available_at
+      t.date :start_at
+      t.date :end_at
+      t.boolean :available, default: true
       t.timestamps
     end
   end

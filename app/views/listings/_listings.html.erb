@@ -1,0 +1,9 @@
+<div id="listings_partial">
+    <% @listings.each do |listing|  %>
+        <div class="row">
+            <div class="col-md-12">
+                <%= listing.created_at%>
+            </div>
+        </div>
+    <% end %>
+</div>
