@@ -15,13 +15,13 @@
               <h4 class="col-md-3 offset-md-6">Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></h4>
           <% end %>
       </nav>
-      <div class="row header">
+      <div class="row">
           <div class="col-md-6 offset-md-3"><h6 id="notice"><%= notice %></h6></div>
       </div>
-      <div class="row">
-          <div class="col-md-12">
+      <div class="row" style="min-height:100%;">
+
               <%= yield %>
-          </div>
+
       </div>
   </body>
 </html>

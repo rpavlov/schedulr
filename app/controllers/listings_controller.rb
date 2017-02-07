@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   end
   def create
   end
-  
+
   def refresh_listings
     @listings = Listing.all
     respond_to do |format|
