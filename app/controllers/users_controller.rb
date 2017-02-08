@@ -6,9 +6,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     user.roles << Role.find(params[:user][:role_ids])#strong params has undone me
-    
     if user.save
-      byebug
       session[:user_id] = user.id
       redirect_to '/'
     else

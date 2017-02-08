@@ -1,19 +1,18 @@
 class Provider::ListingsController < ApplicationController
   before_action :check_role
-  
+  before_action :set_listing, only:[:destroy, :update]
   def index
-    @booked_listings = current_user.listings
-    
-    @open_listings = current_user.listings
+    @booked_listings = current_user.listings.booked
+    @open_listings = current_user.listings.available
   end
   def new
     @listing = Listing.new
   end
   def create
-    @listing = current_user.listings.build(listing_params)
+    @listing = Listing.new(listing_params)
+    @listing.users << current_user
     respond_to do |format|
       if @listing.save
-        byebug
         format.html { redirect_to provider_listings_path, notice: 'Listing was successfully created.' }
       else
         format.html { render :new }
@@ -21,6 +20,13 @@ class Provider::ListingsController < ApplicationController
     end
   end
   def update
+  end
+  def destroy
+    @listing.destroy
+    respond_to do |format|
+      format.html { redirect_to provider_listings_url, notice: 'Listing was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def refresh_listings
@@ -32,5 +38,10 @@ class Provider::ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:start_at, :end_at)
+  end
+
+  private
+  def set_listing
+    @listing = Listing.find(params[:id])
   end
 end

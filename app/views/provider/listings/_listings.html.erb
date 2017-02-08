@@ -1,5 +1,11 @@
-<h3>Booked Listings</h3>
+<h3>My Booked Listings</h3>
 <div id="listings_partial">
+    <div class="row">
+        <div class="col-md-4"><strong>Provider name</strong></div>
+        <div class="col-md-4"><strong>Start Date</strong></div>
+        <div class="col-md-4"><strong>End Date</strong></div>
+    </div>
+    <hr/>
     <% @booked_listings.each do |listing|  %>
         <div class="row">
             <div class="col-md-12">
