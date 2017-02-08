@@ -5,7 +5,7 @@ class Listing < ActiveRecord::Base
   scope :available, -> {where(available: true).where("start_at > ?", DateTime.now)}
   scope :booked, -> {where.not(available: true)}
   
-  def booked_client
+  def client
     users.select{ |user| !user.is_provider? }.first
   end
 
