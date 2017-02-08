@@ -1,6 +1,6 @@
 class Provider::ListingsController < ApplicationController
-  before_action :check_role
   before_action :set_listing, only:[:destroy, :update]
+
   def index
     @booked_listings = current_user.listings.booked
     @open_listings = current_user.listings.available

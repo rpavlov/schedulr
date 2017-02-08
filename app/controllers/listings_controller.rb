@@ -1,14 +1,11 @@
 class ListingsController < ApplicationController
-  before_filter :check_role
-  
+  before_action :set_listing, only:[:update]
+
   def index
-    @listings = Listing.all
+    @available_listings = Listing.available
+    @booked_listings = current_user.listings
   end
-  def new
-    @listing = Listing.new
-  end
-  def create
-  end
+  
   def update
   end
 
