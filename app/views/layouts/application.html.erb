@@ -13,7 +13,7 @@
             <h2 class="col-md-3">Schedulr</h2>
             <h4 class="col-md-5"><%= notice %></h4>
             <% if current_user %>
-                <h4 class="col-md-4">Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></h4>
+                <h4 class="col-md-4" style="text-align:right;">Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></h4>
             <% end %>
         </nav>
         <div class="row" style="min-height:100%;padding-top:1em;">

@@ -18,20 +18,22 @@ View available listings from service Providers, and book them for one of the ava
 
 ## v2.0 Todo in order of priority
 
-* Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that. 
+* Auto-polling to refresh changes to the available listings has been implemented but disabled, because its crummy. Other possibilities
+for live updating include ActionCable, a library for Rails built on websockets or maybe data-binding via react.
+* Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that.
+* Implement specs.
 * Wire up actionmailer for booking notifications.
 * Add a nice 404 page
-* Implement a better auto-refresh mechanism than the current javascript interval polling. React data-bindings maybe :)
 * Add more properties and details to the listing: price, location, description, pictures etc...
 * Add search and filters for the above details.
 * As an improvement to the current 'Available' flag, add statefulness to the Listing through another model or state-machine. 'Requested', 'Confirmed', 'Booked' can be such states. 'Requested' can transition to 'Confirmed', for example. This will allow more flexibility if a provider wants to modify a listing without canceling it. In this case it might go back to 'Requested'.
 
-## Prerequisites
+## Deployment & configuration
+
+### Prerequisites
 
 `docker-engine >=1.13`
 `docker-compose >=1.1.0`
-
-## Deployment & configuration
 
 Docker environment variables are referenced in `.env.web` and `.env.db`. Don't forget to drop in a `config/database.yml` too.
 

@@ -23,9 +23,7 @@ class Provider::ListingsController < ApplicationController
     end
   end
   def cancel
-    @listing.available=true
-    @listing.users = [current_user]
-    @listing.save
+    @listing.update(available: true, users: [current_user])
     fetch_listings
     respond_to do |format|
       format.js { render "refresh_listings" }
@@ -47,8 +45,8 @@ class Provider::ListingsController < ApplicationController
     params.require(:listing).permit(:start_at, :end_at)
   end
   private
-  def set_listing
-    @listing = Listing.find(params[:id])
+  def set_listing 
+     @listing = Listing.find(params[:id])
   end
   def fetch_listings
     @booked_listings = current_user.listings.booked
