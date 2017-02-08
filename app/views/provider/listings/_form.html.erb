@@ -10,11 +10,11 @@
         </div>
     <% end %>
     <div class="field">
-        <%= f.label :start_at %>
+        <%= f.label :start_at, default: 1.hours.from_now %>
         <%= f.datetime_select :start_at %>
     </div>
     <div class="field">
-        <%= f.label :end_at %>
+        <%= f.label :end_at, default: 2.hours.from_now  %>
         <%= f.datetime_select :end_at %>
     </div>
     <div class="actions">

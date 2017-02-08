@@ -3,7 +3,10 @@ $(document).ready(function () {
 });
 
 function refreshListings() {
-    $.ajax({
-        url: "listings/refresh_listings"
-    });
+    if(window.location.pathname == '/' || window.location.pathname =='/provider/listings'){
+        $.ajax({
+            url: "listings/refresh_listings"
+        });    
+    }
+
 };

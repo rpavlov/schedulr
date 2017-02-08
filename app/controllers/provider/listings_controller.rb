@@ -1,9 +1,7 @@
 class Provider::ListingsController < ApplicationController
   before_action :set_listing, only:[:destroy, :update]
-
-  def index
-    @booked_listings = current_user.listings.booked
-    @open_listings = current_user.listings.available
+  before_action :fetch_listings, only:[:index, :refresh_listings]
+  def index    
   end
   def new
     @listing = Listing.new
@@ -19,7 +17,10 @@ class Provider::ListingsController < ApplicationController
       end
     end
   end
-  def update
+  def refresh_listings
+    respond_to do |format|
+      format.js
+    end
   end
   def destroy
     @listing.destroy
@@ -43,5 +44,9 @@ class Provider::ListingsController < ApplicationController
   private
   def set_listing
     @listing = Listing.find(params[:id])
+  end
+  def fetch_listings
+    @booked_listings = current_user.listings.booked
+    @available_listings = current_user.listings.available
   end
 end

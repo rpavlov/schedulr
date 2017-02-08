@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   namespace :provider do
     resources :listings do
+      get :refresh_listings, on: :collection
       post :cancel, on: :member
     end
   end
