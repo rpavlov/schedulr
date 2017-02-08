@@ -1,0 +1,10 @@
+<h3>Open Listings</h3><%= link_to "New Listing", new_provider_listing_path, class:"btn btn-success"%>
+<div id="listings_partial">
+    <% @open_listings.each do |listing|  %>
+        <div class="row">
+            <div class="col-md-12">
+                <%= listing.created_at %>
+            </div>
+        </div>
+    <% end %>
+</div>

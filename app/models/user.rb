@@ -4,8 +4,13 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :listings
 
   validates_presence_of :email
+  validates_uniqueness_of :email
+  validates_format_of :email, :with => /@/
   validates_presence_of :name
   validates_presence_of :password
   validates_length_of :password, :minimum=> 8
-  validates_format_of :email, :with => /@/
+
+  def is_provider?
+    roles.pluck(:id).include? 1
+  end
 end

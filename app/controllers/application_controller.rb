@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to '/login' unless current_user
   end
+  def check_role
+    # if current_user.is_provider?
+    #   redirect_to '/admin/listings'
+    # else
+    #   redirect_to '/'
+    # end
+    
+  end
 end

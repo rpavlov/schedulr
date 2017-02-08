@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'listings#index'
   get '/register' => 'users#new'
   post '/users' => 'users#create'
@@ -11,4 +9,9 @@ Rails.application.routes.draw do
   resources :listings do
     get :refresh_listings, on: :collection
   end
+
+  namespace :provider do
+    resources :listings
+  end
+  
 end

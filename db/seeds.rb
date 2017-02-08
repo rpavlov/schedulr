@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Role.create([{name: "Nanny"}, {name: "Parent"}])
 User.create([
-              {name: "Bob", email:"123@123.com", password:"12345678", password_confirmation: "12345678",roles: [Role.first]},
-              {name: "Jill", email:"123@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.first]},
-              {name: "Bill",  email:"123@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.last]}
+              {name: "Bob", email:"bob@123.com", password:"12345678", password_confirmation: "12345678",roles: [Role.first]},
+              {name: "Jill", email:"jill@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.first]},
+              {name: "Bill",  email:"bill@123.com",password:"12345678", password_confirmation: "12345678", roles: [Role.last]}
             ])
 
 Listing.create([

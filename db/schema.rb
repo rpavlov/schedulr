@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170207220439) do
     t.integer  "price"
     t.string   "location"
     t.text     "description", limit: 65535
-    t.date     "start_at"
-    t.date     "end_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.boolean  "available",                 default: true
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
