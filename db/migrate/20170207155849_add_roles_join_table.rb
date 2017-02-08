@@ -1,8 +1,7 @@
 class AddRolesJoinTable < ActiveRecord::Migration[5.0]
   def change
-    create_table :roles_users, id: false do |t|
-      t.belongs_to :role
-      t.belongs_to :user
+    create_join_table :roles, :users do |t|
+      t.index [:role_id, :user_id]
     end
   end
 end

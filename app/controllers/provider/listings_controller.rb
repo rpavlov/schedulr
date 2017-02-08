@@ -1,18 +1,19 @@
 class Provider::ListingsController < ApplicationController
-  before_filter :check_role
+  before_action :check_role
   
   def index
     @booked_listings = current_user.listings
+    
     @open_listings = current_user.listings
   end
   def new
     @listing = Listing.new
   end
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
     respond_to do |format|
       if @listing.save
-        
+        byebug
         format.html { redirect_to provider_listings_path, notice: 'Listing was successfully created.' }
       else
         format.html { render :new }

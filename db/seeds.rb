@@ -13,8 +13,8 @@ User.create([
             ])
 
 Listing.create([
-                 {users: [User.first], description:"List1", start_at: Date.new, end_at: 100.days.from_now, price:1235},
-                 {users: [User.first], description:"List2", start_at: Date.new, end_at: 5.days.from_now, price:10000},
-                 {users: [User.last], description:"List3", start_at: Date.new, end_at: 10.days.from_now, price:100}
+                 {users: [User.first], description:"List1", start_at: DateTime.new, end_at: 100.days.from_now, price:1235},
+                 {users: [User.first], description:"List2", start_at: DateTime.new, end_at: 5.days.from_now, price:10000},
+                 {users: [User.last], description:"List3", start_at: DateTime.new, end_at: 10.days.from_now, price:100}
                ])
 
