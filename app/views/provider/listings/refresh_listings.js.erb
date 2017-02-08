@@ -1,2 +1,2 @@
-$('#provider-booked-listings').html("<%= escape_javascript(render partial: 'listings', data: @available_listings)%>");
-$('#provider-my-listings').html("<%= escape_javascript(render partial: 'my_listings', data: @booked_listings)%>");
+$('#provider-booked-listings').html("<%= escape_javascript(render partial: 'listings', data: @booked_listings)%>");
+$('#provider-my-listings').html("<%= escape_javascript(render partial: 'my_listings', data: @available_listings)%>");

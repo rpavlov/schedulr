@@ -1,7 +1,7 @@
 class Provider::ListingsController < ApplicationController
-  before_action :set_listing, only:[:destroy, :update]
+  before_action :set_listing, only:[:destroy, :cancel]
   before_action :fetch_listings, only:[:index, :refresh_listings]
-  def index    
+  def index
   end
   def new
     @listing = Listing.new
@@ -22,6 +22,15 @@ class Provider::ListingsController < ApplicationController
       format.js
     end
   end
+  def cancel
+    @listing.available=true
+    @listing.users = [current_user]
+    @listing.save
+    fetch_listings
+    respond_to do |format|
+      format.js { render "refresh_listings" }
+    end
+  end
   def destroy
     @listing.destroy
     respond_to do |format|
@@ -29,18 +38,14 @@ class Provider::ListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   def refresh_listings
-    @listings = Listing.all
     respond_to do |format|
       format.js
     end
   end
-
   def listing_params
     params.require(:listing).permit(:start_at, :end_at)
   end
-
   private
   def set_listing
     @listing = Listing.find(params[:id])
