@@ -1,9 +1,9 @@
-// $(document).ready(function () {
-//     setInterval(refreshListings, 3000);
-// });
+$(document).ready(function () {
+    setInterval(refreshListings, 3000);
+});
 
-// function refreshListings() {
-//     $.ajax({
-//         url: "listings/refresh_listings"
-//     });
-// };
+function refreshListings() {
+    $.ajax({
+        url: "listings/refresh_listings"
+    });
+};
