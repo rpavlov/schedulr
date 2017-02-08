@@ -2,13 +2,15 @@
 
 ## Description
 
-View available timeslots for a <skilled_service_person>, and book them for a <skilled_service>. 
+View available timeslots for a service Provider, and book them for one of the available time-blocks that they've listed. 
+
+## Design decisions
+
+* Providers are prevented from viewing all other listings except their own. They can of course create a separate client account, however.
 
 ## Todo
 
-* Wire up actionmailer
-* Add limit to bookings.
-* Add recurring bookings.
+* Wire up actionmailer for booking notifications.
 
 ## Prerequisites
 
