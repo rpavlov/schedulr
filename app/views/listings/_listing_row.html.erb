@@ -1,6 +1,0 @@
-<div class="row">
-    <div class="col-md-3"><%=listing.provider.name%></div>
-    <div class="col-md-4"><%=listing.start_at_label %></div>
-    <div class="col-md-4"><%=listing.end_at_label %></div>
-    <div class="col-md-1"><%= link_to 'X', provider_listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></div>
-</div>
