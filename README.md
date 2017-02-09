@@ -2,7 +2,9 @@
 
 ## Description
 
-View available listings from service Providers, and book them for one of the available time-blocks that they've listed. 
+View available listings from service Providers, and book their services for one of the available time-blocks that they've listed. 
+
+Hit `http://fsi.memcpy.io/register` for a demo.
 
 ## Design decisions
 
@@ -15,14 +17,12 @@ View available listings from service Providers, and book them for one of the ava
 
 ### Clients
 * Available listings whose dates overlap with currently booked listings will have their Book button disabled.
-* Cannot see available listings whose start_at is in the past.
+* Cannot see available listings whose start_at is in the past, i.e expired.
 * Can cancel a booking.
-
 
 ## v2.0 Todo in order of priority
 
-* Auto-polling to refresh changes to the available listings has been implemented but disabled, because its crummy. Other possibilities
-for live updating include ActionCable, a library for Rails built on websockets+Redis or maybe data-binding via react.
+* Auto-polling to refresh changes to the available listings has been implemented but left disabled, because its crummy. Other possibilities for live updating include ActionCable, a library for Rails built on websockets+Redis or maybe data-binding via react.
 * Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that. 
 * Implement specs.
 * Wire up actionmailer for booking notifications.
