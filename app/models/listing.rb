@@ -1,8 +1,9 @@
 class Listing < ActiveRecord::Base
   has_and_belongs_to_many :users
   validate :dates_valid
-  
-  scope :available, -> {where(available: true).where("start_at > ?", DateTime.now)}
+  validate :double_booking, :on => :create
+  scope :available, -> {where(available: true)}
+  scope :in_the_future, -> {where("start_at > ?", DateTime.now)}
   scope :booked, -> {where.not(available: true)}
   
   def client
@@ -29,6 +30,14 @@ class Listing < ActiveRecord::Base
     end
     if self[:start_at] < DateTime.now
       errors[:start_at] << ': Start date cannot be in the past!'
+    end
+  end
+  def in_the_past?
+    start_at < DateTime.now
+  end
+  def double_booking
+    if users.collect.map(&:listings).flatten.map{ |listing| (listing.start_at..listing.end_at).overlaps?(self[:start_at]..self[:end_at])}.any?
+      errors[:start_at] << ": Dates overlap with one or more of your existing listings!"
     end
   end
 end

@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
     end
   end
   def cancel
-    if @listing
+    if @listing      
       @listing.update(available: true, users: @listing.users.select{ |user| user.is_provider? })
     end
     fetch_listings
@@ -36,7 +36,7 @@ class ListingsController < ApplicationController
     end
   end
   def fetch_listings
-    @available_listings = Listing.available
+    @available_listings = Listing.available.in_the_future.sort_by(&:start_at)
     @booked_listings = current_user.listings
   end
 end

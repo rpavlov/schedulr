@@ -12,11 +12,13 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
   def check_role
-    if current_user.is_provider?
-      redirect_to '/provider/listings' if current_page?(listings_path) || current_page?('/')
-    else
-      redirect_to '/' if current_page?(provider_listings_path)
+    if current_user
+      if current_user.is_provider?
+        redirect_to '/provider/listings' if current_page?(listings_path) || current_page?('/')
+      else
+        redirect_to '/' if current_page?(provider_listings_path)
+      end
     end
-    
   end
 end
+

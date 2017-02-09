@@ -11,16 +11,19 @@ View available listings from service Providers, and book them for one of the ava
 * Minimum booking timeblock is 1 hour. No maximum.
 * Cannot create two listings that overlap, i.e no double-booking.
 * Can cancel a booking; it will become available once again.
+* Can see their own listings whose start_at time is in the past. It will be highlighted as such.
 
 ### Clients
-* Cannot select two listings that overlap. 
+* Cannot see available listings whose times overlap with current bookings.
+* Cannot see available listings whose start_at is in the past.
 * Can cancel a booking.
+
 
 ## v2.0 Todo in order of priority
 
 * Auto-polling to refresh changes to the available listings has been implemented but disabled, because its crummy. Other possibilities
-for live updating include ActionCable, a library for Rails built on websockets or maybe data-binding via react.
-* Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that.
+for live updating include ActionCable, a library for Rails built on websockets+Redis or maybe data-binding via react.
+* Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that. 
 * Implement specs.
 * Wire up actionmailer for booking notifications.
 * Add a nice 404 page

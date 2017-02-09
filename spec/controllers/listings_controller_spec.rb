@@ -16,7 +16,7 @@ RSpec.describe ListingsController, :type => :controller do
     end
     it "fetches the correct listings for this user" do
     end
-    it "fetches all available listings that are not in the past" do
+    it "only fetches available listings whose start_at is in the future" do
     end
   end
   describe "Provider Listings Controller" do
@@ -33,6 +33,8 @@ RSpec.describe ListingsController, :type => :controller do
     it "can delete an available listing" do
     end
     it "fetches the correct listings for this user" do
+    end
+    it "ensures dates don't overlap aka can't create double-booking"do
     end
   end
 end
