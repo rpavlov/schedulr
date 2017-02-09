@@ -1,0 +1,22 @@
+---
+# development: &default
+#   encoding: utf8
+#   database: schedulr_db
+#   pool: 5
+#   username: root
+#   password: password
+#   host: db
+# production:
+#   encoding: utf8
+#   database: schedulr_db
+#   pool: 5
+#   username: root
+#   password: password
+#   host: db
+default: &default
+  url: <%= ENV['DATABASE_URL'] %>
+development:
+  <<: *default
+production:
+  <<: *default
+  

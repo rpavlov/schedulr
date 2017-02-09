@@ -38,13 +38,13 @@ Hit `http://fsi.memcpy.io/register` for a demo.
 `docker-engine >=1.13`
 `docker-compose >=1.1.0`
 
-Docker environment variables are referenced in `.env.web` and `.env.db`. Don't forget to drop in a `config/database.yml` too.
-
 From within your host `git clone git@github.com:rpavlov/schedulr.git`, 
-`cd schedulr/`, `docker-compose build` and finally `docker-compose up`.
+`cd schedulr/`, `docker-compose build` and then `docker-compose up`.
+
+Finally `docker-compose run -e RAILS_ENV=production web rake db:migrate` and `docker-compose run -e RAILS_ENV=production web rake db:seed`
 
 Hit `0.0.0.0:3000/register`
 
 ## Testing
 
-`docker-compose run -e RAILS_ENV=test web rake rspec spec`
+`docker-compose run -e RAILS_ENV=test web bundle exec rspec`

@@ -4,13 +4,13 @@ web:
     - .:/schedulr
   ports:
     - "3000:3000"
-  # links:
-  #    - db
-  env_file:
-    - '.env.web'
-# db:
-#   image: library/mysql:5.6.29
-#   ports:
-#     - "3307:3306"
-#   env_file:
-#     - '.env.db'
+  environment:
+    RAILS_ENV: development
+    DATABASE_URL: mysql2://root:root@mysql/rails
+  links:
+    - "mysql:mysql"
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: rails
