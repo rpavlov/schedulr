@@ -23,7 +23,6 @@ Hit `http://fsi.memcpy.io/register` for a demo.
 ## v2.0 Todo in order of priority
 
 * Auto-polling to refresh changes to the available listings has been implemented but left disabled, because its crummy. Other possibilities for live updating include ActionCable, a library for Rails built on websockets+Redis or maybe data-binding via react.
-* Have the ability to book multiple time-slots in a single day. Add a has_many :time_blocks resource to Listing, and move the :start_at and :end_at properties into that. 
 * Implement specs.
 * Wire up actionmailer for booking notifications.
 * Add a nice 404 page
