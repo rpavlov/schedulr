@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only:[:book, :cancel]
   before_action :fetch_listings, only:[:index, :refresh_listings]
-  
+  helper_method :is_double_booked?
   def index
   end
   def book
@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
     end
   end
   def cancel
-    if @listing      
+    if @listing
       @listing.update(available: true, users: @listing.users.select{ |user| user.is_provider? })
     end
     fetch_listings
@@ -26,6 +26,9 @@ class ListingsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+  def is_double_booked?(listing_arg)
+    current_user.listings.map{ |listing| (listing.start_at..listing.end_at).overlaps?(listing_arg.start_at..listing_arg.end_at)}.any?
   end
   private
   def set_listing

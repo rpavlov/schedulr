@@ -14,7 +14,7 @@ View available listings from service Providers, and book them for one of the ava
 * Can see their own listings whose start_at time is in the past. It will be highlighted as such.
 
 ### Clients
-* Cannot see available listings whose times overlap with current bookings.
+* Available listings whose dates overlap with currently booked listings will have their Book button disabled.
 * Cannot see available listings whose start_at is in the past.
 * Can cancel a booking.
 
